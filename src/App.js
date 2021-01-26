@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 // Styling
 import './App.scss';
 // Components
-import Slider from './Slider';
-import SidebarItem from './';
+import Slider from './components/Slider';
+// import SidebarItem from './components/SidebarItem';
 
 const DEFAULT_OPTIONS = [
   {
