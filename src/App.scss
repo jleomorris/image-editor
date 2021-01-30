@@ -22,14 +22,14 @@ body {
   background-position: top;
   background-size: cover;
   width: 100%;
-  min-height: 60vh;
+  min-height: 100vh;
   padding: 4rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   h1{ 
-    font-size: 5rem;
+    font-size: 10rem;
     width: 50%;
     // border: 2px solid red;
     color: white;
@@ -43,7 +43,7 @@ body {
 
 .container {
   border-radius: 1rem;
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
   background-color: #ffffffba;
   width: 80%;
@@ -60,11 +60,12 @@ body {
     box-shadow: 0px 2px 30px rgba(0, 0, 0, 0.2);
     border-radius: 2rem;
     position: relative;
-    background: rgba(203, 241, 255, 0.25);
+    background: rgba(219, 245, 255, 0.25);
   
     .image-option {
       border-radius: 0.5rem;
       width: 15%;
+      height: 300px;
       margin: 1rem;
       cursor: pointer;
       transition: all 0.5s ease;
@@ -78,7 +79,8 @@ body {
       position: absolute;
       // border: 2px solid red;
       top: -40px;
-      left: 20px;
+      left: 50%;
+      transform: translateX(-50%);
       padding: 0rem 2rem;
       display: flex;
       justify-content: flex-start;
@@ -113,15 +115,16 @@ body {
   border-radius: 2rem;
   height: 100vh;
   width: 100%;
-  padding: 4rem;
-  background: rgba(255, 0, 0, 0.35);
-  margin: 10rem 0rem;
+  padding: 8rem 6rem;
+  background: rgba(219, 245, 255, 0.25);
+  margin: 10rem auto;
 
   .step-two-container {
     position: absolute;
     // border: 2px solid red;
     top: -40px;
-    left: 20px;
+    left: 50%;
+    transform: translateX(-50%);
     padding: 0rem 2rem;
     display: flex;
     justify-content: flex-start;
@@ -153,7 +156,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 2rem 0rem;
+  margin: 4rem 0rem;
 
   p {
     border-radius: 50%;
@@ -213,7 +216,7 @@ body {
     padding: 0.5rem 2rem;
 
     &:hover {
-      filter: invert(1);
+      transform: scale(1.2);
     }
   }
 

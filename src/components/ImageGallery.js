@@ -1,7 +1,9 @@
 import React from 'react'
 // Images 
+import canal from '../img/canal.jpg';
 import cat_cactus from '../img/cat_cactus.jpg';
 import china from '../img/china.jpg';
+import city from '../img/city.jpg';
 import coast from '../img/coast.jpg';
 import foliage from '../img/foliage.jpg';
 import forest from '../img/forest.jpg';
@@ -19,6 +21,8 @@ const ImageGallery = ({changeImageHandler}) => {
           <h2>Choose an image</h2>
         </div>
         <img className="image-option" alt="option" src={cat_cactus} onClick={changeImageHandler}></img>
+        <img className="image-option" alt="option" src={canal} onClick={changeImageHandler}></img>
+        <img className="image-option" alt="option" src={city} onClick={changeImageHandler}></img>
         <img className="image-option" alt="option" src={china} onClick={changeImageHandler}></img>
         <img className="image-option" alt="option" src={coast} onClick={changeImageHandler}></img>
         <img className="image-option" alt="option" src={foliage} onClick={changeImageHandler}></img>
