@@ -6,79 +6,8 @@ import cat_cactus from './img/cat_cactus.jpg';
 // Components
 import ImageGallery from './components/ImageGallery';
 import ImageEditor from './components/ImageEditor';
-
-const DEFAULT_OPTIONS = [
-  {
-    name: 'Brightness',
-    property: 'brightness',
-    value: 100,
-    range: {
-      min: 0,
-      max: 200
-    },
-    unit: '%'
-  },
-  {
-    name: 'Contrast',
-    property: 'contrast',
-    value: 100,
-    range: {
-      min: 0,
-      max: 200
-    },
-    unit: '%'
-  },
-  {
-    name: 'Saturation',
-    property: 'saturate',
-    value: 100,
-    range: {
-      min: 0,
-      max: 200
-    },
-    unit: '%'
-  },
-  {
-    name: 'Grayscale',
-    property: 'grayscale',
-    value: 0,
-    range: {
-      min: 0,
-      max: 100
-    },
-    unit: '%'
-  },
-  {
-    name: 'Sepia',
-    property: 'sepia',
-    value: 0,
-    range: {
-      min: 0,
-      max: 100
-    },
-    unit: '%'
-  },
-  {
-    name: 'Hue Rotate',
-    property: 'hue-rotate',
-    value: 0,
-    range: {
-      min: 0,
-      max: 360
-    },
-    unit: 'deg'
-  },
-  {
-    name: 'Blur',
-    property: 'blur',
-    value: 0,
-    range: {
-      min: 0,
-      max: 20
-    },
-    unit: 'px'
-  },
-]
+// Default editor options
+import {DEFAULT_OPTIONS} from './util';
 
 const App = () => {
   // State
@@ -118,21 +47,32 @@ const App = () => {
 
   return (
     <>
-      <div className="header">
-        <h1>Photo editor</h1>
-      </div>
+      <Header />
       <div className="container">
         <ImageGallery changeImageHandler={changeImageHandler}/>
         <ImageEditor options={options} handleResetButtonClick={handleResetButtonClick} handleSliderChange={handleSliderChange} getImageStyle={getImageStyle} backgroundUrl={backgroundUrl}/>
-        <div className="final-step">
-          <p>3</p>
-          <h2>Cut using snippy/screenshot & crop and use as custom wallpaper</h2>
-        </div>
-      </div>
-      <div>
+        <Final />
       </div>
     </>
   );
+}
+
+// Components
+const Header = () => {
+  return(
+    <div className="header">
+    <h1>Photo editor</h1>
+  </div>
+  )
+} 
+
+const Final = () => {
+  return(
+    <div className="final-step">
+      <p>3</p>
+      <h2>Cut using snippy/screenshot & crop and use as custom wallpaper</h2>
+    </div>
+  )
 }
 
 export default App;
