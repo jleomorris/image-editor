@@ -3,7 +3,15 @@ import React, { useState } from 'react';
 import './App.scss';
 // Components
 import Slider from './components/Slider';
-// import SidebarItem from './components/SidebarItem';
+//Images 
+import cat_cactus from './img/cat_cactus.jpg';
+import china from './img/china.jpg';
+import coast from './img/coast.jpg';
+import foliage from './img/foliage.jpg';
+import forest from './img/forest.jpg';
+import plant_shelf from './img/plant_shelf.jpg';
+import tree from './img/tree.jpg';
+import windsurfing from './img/windsurfing.jpg';
 
 const DEFAULT_OPTIONS = [
   {
@@ -81,8 +89,8 @@ const DEFAULT_OPTIONS = [
 function App() {
   const [options, setOptions] = useState(DEFAULT_OPTIONS);
   const [selectedOptionIndex, setSelectedOptionSelectedIndex] = useState(0);
-  const selectedOption = options[selectedOptionIndex];
-  const [backgroundUrl, setBackgroundUrl] = useState("https://source.unsplash.com/EwKXn5CapA4");
+  // const selectedOption = options[selectedOptionIndex];
+  const [backgroundUrl, setBackgroundUrl] = useState(cat_cactus);
 
   function handleSliderChange({ target }) {   
     // Look through options and change the value of the selected option
@@ -99,10 +107,10 @@ function App() {
       return `${option.property}(${option.value}${option.unit})`;
     })
 
-    return { filter: filters.join(' '), backgroundImage: `url(${backgroundUrl})` };
+    return { filter: filters.join(' ') };
   }
 
-  function handleAlternativeImgClick(e) {
+  function changeImageHandler(e) {
     setBackgroundUrl(e.target.src);
     resetFilters();
   }
@@ -118,47 +126,51 @@ function App() {
   return (
     <>
       <div className="header">
-        <h1>Photo editor and snapshot</h1>
+        <h1>Photo editor</h1>
+      </div>
+      <div className="container">
         <div className="image-gallery">
           <div className="step-one-container">
             <p>1</p>
             <h2>Choose an image</h2>
           </div>
-          <img className="alternative-image" src="https://source.unsplash.com/EwKXn5CapA4" onClick={handleAlternativeImgClick}></img>
-          <img className="alternative-image" src="https://images.unsplash.com/photo-1604202400173-051d875ae26a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" onClick={handleAlternativeImgClick}></img>
-          <img className="alternative-image" src="https://images.unsplash.com/photo-1604169152293-f28c94d08a82?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" onClick={handleAlternativeImgClick}></img>
-          <img className="alternative-image" src="https://images.unsplash.com/photo-1604333141071-a9156446d984?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3892&q=80" onClick={handleAlternativeImgClick}></img>
-          <img className="alternative-image" src="https://images.unsplash.com/photo-1604342567568-0a59b6e4da11?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80" onClick={handleAlternativeImgClick}></img>
-          <img className="alternative-image" src="https://images.unsplash.com/photo-1604236029100-809ebc46ef75?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80" onClick={handleAlternativeImgClick}></img>
-          <img className="alternative-image" src="https://images.unsplash.com/photo-1604208073678-2753d0da599f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=701&q=80" onClick={handleAlternativeImgClick}></img>
-          <img className="alternative-image" src="https://images.unsplash.com/photo-1601758065893-25c11bfa69b5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1279&q=80" onClick={handleAlternativeImgClick}></img>
+          <img className="image-option" alt="option" src={cat_cactus} onClick={changeImageHandler}></img>
+          <img className="image-option" alt="option" src={china} onClick={changeImageHandler}></img>
+          <img className="image-option" alt="option" src={coast} onClick={changeImageHandler}></img>
+          <img className="image-option" alt="option" src={foliage} onClick={changeImageHandler}></img>
+          <img className="image-option" alt="option" src={forest} onClick={changeImageHandler}></img>
+          <img className="image-option" alt="option" src={plant_shelf} onClick={changeImageHandler}></img>
+          <img className="image-option" alt="option" src={tree} onClick={changeImageHandler}></img>
+          <img className="image-option" alt="option" src={windsurfing} onClick={changeImageHandler}></img>
         </div>
-      </div>
-      <div className="container">
-        {/* <div className="sidebar">
-        </div> */}
         <div className="main-image-container">
-          <div className="main-image" style={getImageStyle()}></div>
           <div className="step-two-container">
             <p>2</p>
-            <h2>Play with filters and edit away</h2>
+            <h2>Edit by adjusting filters</h2>
           </div>
+          <div className="slider-container">
+            {options.map((option, index) => {
+              return(
+                <Slider 
+                key={option.name}
+                name={option.name}
+                min={option.range.min}
+                max={option.range.max}
+                value={option.value}
+                handleChange={handleSliderChange}  
+                />
+                )
+              })}
+            <button className="reset-button" onClick={handleResetButtonClick}>Reset</button>
+          </div>
+          <img id="main-image" src={backgroundUrl} style={getImageStyle()} alt="edited"></img>
         </div>
-        <div className="slider-container">
-          {options.map((option, index) => {
-            return(
-              <Slider 
-              key={option.name}
-              name={option.name}
-              min={option.range.min}
-              max={option.range.max}
-              value={option.value}
-              handleChange={handleSliderChange}  
-              />
-              )
-            })}
-          <button className="reset-button" onClick={handleResetButtonClick}>Reset</button>
+        <div className="final-step">
+          <p>3</p>
+          <h2>Cut using snippy/screenshot & crop and use as custom wallpaper</h2>
         </div>
+      </div>
+      <div>
       </div>
     </>
   );
