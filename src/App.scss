@@ -4,8 +4,9 @@
 
 * {
   font-family: 'Fraunces', serif;
+  
   @media(max-width: 800px) {
-    font-size: 90%;
+      // font-size: 90%;
   }
 }
 
@@ -27,13 +28,24 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  
+  @media(max-width: 800px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
   h1{ 
     font-size: 10rem;
     width: 50%;
-    // border: 2px solid red;
     color: white;
     font-family: 'Fraunces', serif;
+    
+    @media(max-width: 800px) {
+      font-size: 4rem;
+      width: 100%;
+      text-align: center;
+    }
   }
   
   h2, p, input {
@@ -44,10 +56,17 @@ body {
 .container {
   border-radius: 1rem;
   min-height: 100vh;
-  width: 100vw;
   background-color: #ffffffba;
   width: 80%;
   margin: 1rem auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  @media(max-width: 800px) {
+    width: 100%;  
+  }
 
   .image-gallery {
     width: 80%;
@@ -56,19 +75,39 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    padding: 6rem 0rem;
+    padding: 6rem 3rem;
     box-shadow: 0px 2px 30px rgba(0, 0, 0, 0.2);
     border-radius: 2rem;
     position: relative;
     background: rgba(219, 245, 255, 0.25);
+    
+    @media(max-width: 500px) {
+      margin: 5rem auto !important;
+    }
+
+    @media(max-width: 1200px) {
+      padding: 6rem 1rem 1rem 1rem;
+      width: 90%;
+    }
+    
   
     .image-option {
       border-radius: 0.5rem;
-      width: 15%;
+      width: 200px;
       height: 300px;
       margin: 1rem;
       cursor: pointer;
       transition: all 0.5s ease;
+
+      @media(max-width: 800px) {
+        width: 100px;
+        height: 150px;
+      }
+
+      @media(max-width: 400px) {
+        width: 95px;
+        height: 140px;
+      }
 
       &:hover {
         transform: scale(1.1);
@@ -107,18 +146,24 @@ body {
 }
 
 .image-editor-container {
+  width: 80%;
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
   align-items: center;
   position: relative;
   box-shadow: 0px 2px 30px rgba(0, 0, 0, 0.2);
   border-radius: 2rem;
-  height: 100vh;
-  width: 100%;
+  min-height: 100vh;
   padding: 8rem 6rem;
   background: rgba(219, 245, 255, 0.25);
-  margin: 10rem auto;
-
+  margin: 0rem auto;
+  
+  @media(max-width: 1200px) {
+    padding: 8rem 2rem 3rem 2rem;
+    width: 90%;
+  }
+  
   .step-two-container {
     position: absolute;
     // border: 2px solid red;
@@ -132,11 +177,11 @@ body {
     background: rgb(256,256,256);
     border-radius: 4rem;
     box-shadow: 0px 0px 30px rgba(0,0,0,0.2);
-
+    
     h2 {
       width: fit-content;
     }
-
+    
     p {
       border-radius: 50%;
       border: 4px solid white;
@@ -156,7 +201,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 4rem 0rem;
+  margin: 2rem 0rem;
+  width: 80%;
 
   p {
     border-radius: 50%;
@@ -168,13 +214,24 @@ body {
     left: -30px;
     background: rgb(0,0,0);
     color: white;
+
+    @media(max-width: 500px) {
+      font-size: 1rem;
+    }
   }
 }
 
 #main-image {
-  width: 50%;
-  height: 100%;
+  width: 600px;
   object-fit: cover;
+  
+  @media(max-width: 800px) {
+    width: 350px;
+  }
+
+  @media(max-width: 400px) {
+    width: 250px;
+  }
 }
 
 .slider-container {
@@ -182,12 +239,12 @@ body {
   justify-content: space-around;
   flex-direction: row;
   flex-wrap: wrap;
-  width: fit-content;
+  width: 600px;
 
   .slider-container-item {
     width: 100%;
-    height: 10%;
-    margin: 0 10rem;
+    // height: 10%;
+    margin: 0 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -195,6 +252,11 @@ body {
     p {
       width: 50%;
       font-size: 2rem;
+      margin-right: 1rem;
+
+      @media(max-width: 800px) {
+        font-size: 1rem !important;
+      }
     }
   }
 
@@ -204,10 +266,9 @@ body {
   }
   
   .reset-button {
-    margin: 1rem;
+    margin: 3rem 0rem;
     padding: 0.5rem;
     background: rgba(0, 0, 0, 0);
-    // width: 10%;
     border: 2px solid black;
     box-shadow: 0px 0px 30px rgba(0,0,0,0.2);
     outline: none;
@@ -215,8 +276,12 @@ body {
     transition: all 0.5s ease;
     padding: 0.5rem 2rem;
 
+    @media(max-width: 800px) {
+      font-size: 1rem !important;
+    }
+
     &:hover {
-      transform: scale(1.2);
+      // transform: scale(1.2);
     }
   }
 

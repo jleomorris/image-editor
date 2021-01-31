@@ -6,6 +6,7 @@ import cat_cactus from './img/cat_cactus.jpg';
 // Components
 import ImageGallery from './components/ImageGallery';
 import ImageEditor from './components/ImageEditor';
+import Footer from './components/Footer';
 // Default editor options
 import {DEFAULT_OPTIONS} from './util';
 
@@ -53,6 +54,7 @@ const App = () => {
         <ImageEditor options={options} handleResetButtonClick={handleResetButtonClick} handleSliderChange={handleSliderChange} getImageStyle={getImageStyle} backgroundUrl={backgroundUrl}/>
         <Final />
       </div>
+      <Footer />
     </>
   );
 }
@@ -61,7 +63,7 @@ const App = () => {
 const Header = () => {
   return(
     <div className="header">
-    <h1>Photo editor</h1>
+    <h1>Image editor</h1>
   </div>
   )
 } 
@@ -70,7 +72,7 @@ const Final = () => {
   return(
     <div className="final-step">
       <p>3</p>
-      <h2>Cut using snippy/screenshot & crop and use as custom wallpaper</h2>
+      <h2>Cut using snippy/screenshot & crop</h2>
     </div>
   )
 }
