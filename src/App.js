@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // Styling
 import './App.scss';
 //Images 
@@ -7,14 +7,18 @@ import cat_cactus from './img/cat_cactus.jpg';
 import ImageGallery from './components/ImageGallery';
 import ImageEditor from './components/ImageEditor';
 import Footer from './components/Footer';
-// Default editor options
-import {DEFAULT_OPTIONS} from './util';
+// editor options
+import {DEFAULT_OPTIONS, filterPresets} from './util';
 
 const App = () => {
   // State
-  const [options, setOptions] = useState(DEFAULT_OPTIONS);
-  const [selectedOptionIndex, setSelectedOptionSelectedIndex] = useState(0);
+  const [options, setOptions] = useState(null);
   const [backgroundUrl, setBackgroundUrl] = useState(cat_cactus);
+
+  useEffect(() => {
+    const defaultPreset = filterPresets().filter(preset => preset.name == "Default");
+    setOptions(defaultPreset[0].filters);
+  }, [])
 
   const handleSliderChange = ({ target }) => {   
     setOptions(prevOptions => {
@@ -26,11 +30,13 @@ const App = () => {
   }
 
   const getImageStyle = () => {
-    const filters = options.map(option => {
-      return `${option.property}(${option.value}${option.unit})`;
-    })
-
-    return { filter: filters.join(' ') };
+    if(options) {
+      const filters = options.map(option => {
+        return `${option.property}(${option.value}${option.unit})`;
+      })
+  
+      return { filter: filters.join(' ') };
+    }
   }
 
   const changeImageHandler = (e) => {
@@ -51,7 +57,7 @@ const App = () => {
       <Header />
       <div className="container">
         <ImageGallery changeImageHandler={changeImageHandler}/>
-        <ImageEditor options={options} handleResetButtonClick={handleResetButtonClick} handleSliderChange={handleSliderChange} getImageStyle={getImageStyle} backgroundUrl={backgroundUrl}/>
+        <ImageEditor options={options} handleResetButtonClick={handleResetButtonClick} handleSliderChange={handleSliderChange} getImageStyle={getImageStyle} backgroundUrl={backgroundUrl} setOptions={setOptions}/>
         <Final />
       </div>
       <Footer />

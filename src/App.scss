@@ -224,6 +224,7 @@ body {
 #main-image {
   width: 600px;
   object-fit: cover;
+  margin-top: 1rem;
   
   @media(max-width: 800px) {
     width: 350px;
@@ -231,6 +232,38 @@ body {
 
   @media(max-width: 400px) {
     width: 250px;
+  }
+}
+
+.filter-presets {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+
+  .preset {
+    background: rgba(0, 0, 0, 0);
+    margin: 3rem 0rem;
+    padding: 0.5rem 2rem;
+    border: 2px solid black;
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
+    outline: none;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    
+    @media(max-width: 1200px) {
+      margin: 1rem 0rem;
+      font-size: 1rem !important;
+    }
+
+    @media(max-width: 400px) {
+      font-size: 0.5rem !important;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 }
 
@@ -265,26 +298,6 @@ body {
     cursor: pointer;
   }
   
-  .reset-button {
-    margin: 3rem 0rem;
-    padding: 0.5rem;
-    background: rgba(0, 0, 0, 0);
-    border: 2px solid black;
-    box-shadow: 0px 0px 30px rgba(0,0,0,0.2);
-    outline: none;
-    cursor: pointer;
-    transition: all 0.5s ease;
-    padding: 0.5rem 2rem;
-
-    @media(max-width: 800px) {
-      font-size: 1rem !important;
-    }
-
-    &:hover {
-      // transform: scale(1.2);
-    }
-  }
-
 
 }
 
